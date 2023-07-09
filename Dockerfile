@@ -1,20 +1,14 @@
 ## Base ########################################################################
 # Use a larger node image to do the build for native deps (e.g., gcc, python)
-FROM node:lts 
+FROM node:lts as base
 
 # Reduce npm log spam and colour during install within Docker
 ENV NPM_CONFIG_LOGLEVEL=warn
 ENV NPM_CONFIG_COLOR=false
 
-# We'll run the app as the `node` user, so put it in their home directory
-WORKDIR /home/app
 # Copy the source code over
-COPY . /home/app
+COPY . .
 
-## Development #################################################################
-# Define a development target that installs devDeps and runs in dev mode
-# WORKDIR /home/root/app
-# Install (not ci) with dependencies, and for Linux vs. Linux Musl (which we use for -alpine)
 RUN npm install
 # Switch to the node user vs. root
 USER root
