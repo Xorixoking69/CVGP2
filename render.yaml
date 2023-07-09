@@ -1,0 +1,13 @@
+services:
+  # A Docker web service
+  - type: web
+    name: Tomas
+    runtime: docker
+    repo: https://github.com/Xorixoking69/CVGP2.git # optional
+    region: frankfurt # optional (defaults to oregon)
+    plan: free # optional (defaults to starter instance type)
+    branch: main # optional (defaults to master)
+    # rootDir: webdis
+    # dockerCommand: ./webdis.sh # optional (defaults to Dockerfile command)
+    # numInstances: 3 # optional (defaults to 1)
+    healthCheckPath: /
